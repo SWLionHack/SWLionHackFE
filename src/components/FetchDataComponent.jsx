@@ -11,7 +11,7 @@ const FetchDataComponent = () => {
         // API 호출 함수
         const fetchData = async () => {
             try {
-                const response = await fetch(`${apiBaseUrl}`); // 백엔드 API URL로 변경
+                const response = await fetch(`${apiBaseUrl}/api`); // 백엔드 API URL로 변경
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
