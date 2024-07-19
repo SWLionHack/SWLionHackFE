@@ -25,7 +25,7 @@ const FetchDataComponent = () => {
         };
 
         fetchData();
-    }, []);
+    }, [apiBaseUrl]);
 
     if (loading) {
         return <div>Loading...</div>;
