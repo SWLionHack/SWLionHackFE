@@ -7,6 +7,6 @@ function Header() {
       <p>청소년 정신 건강 서비스</p>
     </header>
   );
-}
+};
 
 export default Header;
