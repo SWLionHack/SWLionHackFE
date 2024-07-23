@@ -1,33 +1,50 @@
 import React, { useState, useEffect } from 'react';
-// import './NearbyCounseling.css';
+import { LoadScript, GoogleMap, Marker } from '@react-google-maps/api';
+import './style/NearbyCounseling.css';
 
-const counselingCenters = [
-  { id: 1, name: '상담소 A', lat: 37.5665, lng: 126.9780 },
-  { id: 2, name: '상담소 B', lat: 37.5651, lng: 126.9895 },
-  { id: 3, name: '상담소 C', lat: 37.5644, lng: 126.9778 },
-];
+const NearbyCounseling = () => {
+  const [currentLocation, setCurrentLocation] = useState({ lat: 37.5665, lng: 126.9780 });
+  const [keyword, setKeyword] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+  const [map, setMap] = useState(null);
+  const [markers, setMarkers] = useState([]);
 
-function getDistance(lat1, lon1, lat2, lon2) {
-  const R = 6371; // 지구의 반지름 (킬로미터)
-  const dLat = (lat2 - lat1) * (Math.PI / 180);
-  const dLon = (lon2 - lon1) * (Math.PI / 180);
-  const a =
-    0.5 - Math.cos(dLat) / 2 +
-    Math.cos(lat1 * (Math.PI / 180)) * Math.cos(lat2 * (Math.PI / 180)) * 
-    (1 - Math.cos(dLon)) / 2;
+  const handleKeywordChange = (e) => {
+    setKeyword(e.target.value);
+  };
 
-  return R * 2 * Math.asin(Math.sqrt(a));
-}
+  const handleSearch = () => {
+    if (keyword && map) {
+      const service = new window.google.maps.places.PlacesService(map);
+      const request = {
+        query: keyword,
+        location: new window.google.maps.LatLng(currentLocation.lat, currentLocation.lng),
+        radius: 5000,
+      };
 
-function NearbyCounseling() {
-  const [location, setLocation] = useState({ lat: null, lng: null });
-  const [nearbyCenters, setNearbyCenters] = useState([]);
+      service.textSearch(request, (results, status) => {
+        if (status === window.google.maps.places.PlacesServiceStatus.OK) {
+          const places = results.slice(0, 10).map((place) => ({
+            name: place.name,
+            address: place.formatted_address,
+            lat: place.geometry.location.lat(),
+            lng: place.geometry.location.lng(),
+          }));
+
+          setSearchResults(places);
+          setMarkers(places.map((place) => ({ lat: place.lat, lng: place.lng })));
+        } else {
+          console.error('Search failed: ', status);
+        }
+      });
+    }
+  };
 
   useEffect(() => {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          setLocation({
+          setCurrentLocation({
             lat: position.coords.latitude,
             lng: position.coords.longitude,
           });
@@ -38,67 +55,49 @@ function NearbyCounseling() {
     }
   }, []);
 
-  useEffect(() => {
-    if (location.lat && location.lng) {
-      const centersWithDistance = counselingCenters.map(center => {
-        const distance = getDistance(location.lat, location.lng, center.lat, center.lng);
-        return { ...center, distance };
-      });
-
-      centersWithDistance.sort((a, b) => a.distance - b.distance);
-      setNearbyCenters(centersWithDistance);
-    }
-  }, [location]);
-
-  useEffect(() => {
-    if (location.lat && location.lng) {
-      const script = document.createElement('script');
-      script.src = `https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${process.env.NAVER_API_CLIENT_SECRET}`;
-      script.async = true;
-      document.head.appendChild(script);
-
-      script.onload = () => {
-        const map = new window.naver.maps.Map('map', {
-          center: new window.naver.maps.LatLng(location.lat, location.lng),
-          zoom: 14
-        });
-
-        new window.naver.maps.Marker({
-          position: new window.naver.maps.LatLng(location.lat, location.lng),
-          map: map,
-          title: '현재 위치'
-        });
-
-        nearbyCenters.forEach(center => {
-          new window.naver.maps.Marker({
-            position: new window.naver.maps.LatLng(center.lat, center.lng),
-            map: map,
-            title: center.name
-          });
-        });
-      };
-    }
-  }, [location, nearbyCenters]);
-
   return (
-    <div className="nearby-counseling">
-      <h2>가까운 상담소 찾기</h2>
-      {location.lat && location.lng ? (
-        <>
-          <div id="map" style={{ width: '100%', height: '400px' }}></div>
-          <ul>
-            {nearbyCenters.map(center => (
-              <li key={center.id}>
-                {center.name} - {center.distance.toFixed(2)} km
+    <div className={`nearby-counseling ${searchResults.length ? 'with-results' : ''}`}>
+      <h2>키워드로 장소 찾기</h2>
+      <div className="search-container">
+        <input
+          type="text"
+          value={keyword}
+          onChange={handleKeywordChange}
+          placeholder="키워드를 입력하세요"
+          className="search-input"
+        />
+        <button onClick={handleSearch} className="search-button">검색</button>
+      </div>
+      <div className="content-container">
+        <div className="map-container">
+          <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY} libraries={['places']}>
+            <GoogleMap
+              center={currentLocation}
+              zoom={14}
+              onLoad={(map) => setMap(map)}
+              mapContainerStyle={{ width: '100%', height: '100%' }}
+            >
+              <Marker position={currentLocation} title="현재 위치" />
+              {markers.map((marker, index) => (
+                <Marker key={index} position={{ lat: marker.lat, lng: marker.lng }} />
+              ))}
+            </GoogleMap>
+          </LoadScript>
+        </div>
+        {searchResults.length > 0 && (
+          <ul className="results-list">
+            {searchResults.map((result, index) => (
+              <li key={index} className="result-item">
+                <strong>{result.name}</strong>
+                <br />
+                {result.address}
               </li>
             ))}
           </ul>
-        </>
-      ) : (
-        <p>위치 정보를 불러오는 중...</p>
-      )}
+        )}
+      </div>
     </div>
   );
-}
+};
 
 export default NearbyCounseling;
