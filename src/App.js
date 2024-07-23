@@ -7,7 +7,7 @@ import Diary from './components/Diary';
 import Survey from './components/Survey';
 import Community from './components/Community';
 import QnA from './components/QnA';
-// import Counseling from './components/Counseling';
+import Counseling from './components/Counseling';
 import NearbyCounseling from './components/NearbyCounseling';
 import Login from './components/login/Login';
 import Register from './components/login/Register';
@@ -35,7 +35,7 @@ function App() {
                       <Route path="/survey" element={<ProtectedRoute><Survey /></ProtectedRoute>} />
                       <Route path="/community" element={<ProtectedRoute><Community /></ProtectedRoute>} />
                       <Route path="/qna" element={<ProtectedRoute><QnA /></ProtectedRoute>} />
-                      {/* <Route path="/counseling" element={<ProtectedRoute><Counseling /></ProtectedRoute>} /> */}
+                      <Route path="/counseling" element={<ProtectedRoute><Counseling /></ProtectedRoute>} />
                       <Route path="/nearby" element={<ProtectedRoute><NearbyCounseling /></ProtectedRoute>} />
                       <Route path="/" element={<Diary />} />
                     </Routes>
