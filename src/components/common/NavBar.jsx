@@ -6,6 +6,10 @@ import 'bootstrap/dist/css/bootstrap.min.css'; // Ensure Bootstrap CSS is import
 function NavBar() {
   const { isAuthenticated, logout } = useContext(AuthContext);
 
+  const handleLogout = () => {
+    logout();
+  };
+
   return (
     <nav className="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
       <a className="navbar-brand ms-5" href="/">MAUM</a>
@@ -29,7 +33,7 @@ function NavBar() {
       <ul className="navbar-nav ms-auto">
         {isAuthenticated ? (
           <li className="nav-item">
-            <span className="navbar-text">안녕하세요</span>
+            <button className="btn btn-link nav-link" onClick={handleLogout}>로그아웃</button>
           </li>
         ) : (
           <li className="nav-item">
@@ -37,7 +41,6 @@ function NavBar() {
           </li>
         )}
       </ul>
-      <button className="logout-button" onClick={handleLogout}>로그아웃</button>
     </nav>
   );
 }

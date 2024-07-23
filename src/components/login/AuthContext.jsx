@@ -11,6 +11,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     setIsAuthenticated(false);
+    localStorage.removeItem('token'); // 로그아웃 시 토큰 삭제
   };
 
   return (
