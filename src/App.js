@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Header from './components/common/Header';
 import Footer from './components/common/Footer';
 import NavBar from './components/common/NavBar';
+import MainPage from './components/MainPage';
 import Diary from './components/Diary';
 import Survey from './components/Survey';
 import Community from './components/Community';
@@ -27,7 +27,6 @@ import './App.css';
 //               path="*"
 //               element={
 //                 <>
-//                   <Header />
 //                   <NavBar />
 //                   <main>
 //                     <Routes>
@@ -62,7 +61,6 @@ function App() {
               path="*"
               element={
                 <>
-                  <Header />
                   <NavBar />
                   <main>
                     <Routes>
@@ -72,10 +70,10 @@ function App() {
                       <Route path="/qna" element={<QnA />} />
                       {/* <Route path="/counseling" element={<Counseling />} /> */}
                       <Route path="/nearby" element={<NearbyCounseling />} />
-                      <Route path="/" element={<Diary />} />
+                      <Route path="/" element={<MainPage />} />
                     </Routes>
                   </main>
-                  <Footer />
+                  {/* <Footer /> */}
                 </>
               }
             />
