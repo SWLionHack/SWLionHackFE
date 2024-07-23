@@ -18,6 +18,9 @@ body {
 .App-nav {
   background-color: #61dafb;
   padding: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .App-nav ul {
@@ -36,6 +39,20 @@ body {
   text-decoration: none;
   color: black;
   font-weight: bold;
+}
+
+.logout-button {
+  background-color: transparent;
+  color: black;
+  padding: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  border: none;
+  width: auto;
+}
+
+.logout-button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 main {

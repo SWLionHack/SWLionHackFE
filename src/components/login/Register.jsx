@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import './Register.css';
 
@@ -113,6 +113,7 @@ function Register() {
           </div>
         </div>
         <button type="submit">회원가입</button>
+        <p>로그인으로 돌아갈까요? <Link to="/login">로그인</Link></p>
       </form>
     </div>
   );
