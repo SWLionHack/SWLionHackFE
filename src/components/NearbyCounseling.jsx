@@ -57,7 +57,7 @@ const NearbyCounseling = () => {
 
   return (
     <div className={`nearby-counseling ${searchResults.length ? 'with-results' : ''}`}>
-      <h2>키워드로 장소 찾기</h2>
+      {/* <h2>키워드로 장소 찾기</h2> */}
       <div className="search-container">
         <input
           type="text"
