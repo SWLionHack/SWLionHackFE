@@ -8,20 +8,27 @@ function Register() {
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [status, setStatus] = useState('parent'); // 기본값 설정
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.post('http://localhost:3001/api/register', {
+      const response = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/sign-up`, {
         name,
         phone,
         email,
         password,
-        status: 'active',
+        confirmPassword,
+        status,
       });
-      alert('회원가입 성공');
-      navigate('/login');
+      if (response.status === 201) {
+        alert('회원가입 성공');
+        navigate('/login');
+      } else {
+        alert(response.data);
+      }
     } catch (error) {
       console.error('회원가입 오류:', error);
       alert('회원가입 실패');
@@ -71,6 +78,39 @@ function Register() {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
+        </div>
+        <div className="form-group">
+          <label htmlFor="confirmPassword">비밀번호 확인:</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label>역할:</label>
+          <div className="radio-group">
+            <label>
+              <input
+                type="radio"
+                value="parent"
+                checked={status === 'parent'}
+                onChange={(e) => setStatus(e.target.value)}
+              />
+              Parent
+            </label>
+            <label>
+              <input
+                type="radio"
+                value="child"
+                checked={status === 'child'}
+                onChange={(e) => setStatus(e.target.value)}
+              />
+              Child
+            </label>
+          </div>
         </div>
         <button type="submit">회원가입</button>
       </form>
