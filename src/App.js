@@ -11,7 +11,8 @@ import Login from './components/login/Login';
 import Register from './components/login/Register';
 import { AuthProvider } from './components/login/AuthContext';
 // import Footer from './components/common/Footer';
-// import Counseling from './components/Counseling';
+import Counseling from './components/Counseling';
+import ChatRoom from './components/ChatRoom';
 // import ProtectedRoute from './components/login/ProtectedRoute';
 import './App.css';
 
@@ -68,7 +69,8 @@ function App() {
                       <Route path="/survey" element={<Survey />} />
                       <Route path="/community" element={<Community />} />
                       <Route path="/qna" element={<QnA />} />
-                      {/* <Route path="/counseling" element={<Counseling />} /> */}
+                      <Route path="/counseling" element={<Counseling />} />
+                      <Route path="/counseling/:id" element={<ChatRoom />} />
                       <Route path="/nearby" element={<NearbyCounseling />} />
                       <Route path="/" element={<MainPage />} />
                     </Routes>

@@ -27,6 +27,9 @@ function NavBar() {
           <Link className="nav-link" to="/qna">전문가 Q&A</Link>
         </li>
         <li className="nav-item">
+          <Link className="nav-link" to="/counseling">상담받기</Link>
+        </li>
+        <li className="nav-item">
           <Link className="nav-link" to="/nearby">가까운 상담소</Link>
         </li>
       </ul>
