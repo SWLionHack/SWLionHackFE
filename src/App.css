@@ -56,6 +56,7 @@ body {
 }
 
 main {
+  margin-top: 80px; /* 네비게이션 바의 높이와 동일하게 설정 */
   padding: 20px;
 }
 

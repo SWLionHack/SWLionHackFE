@@ -13,15 +13,14 @@ function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/login`, {
+      const response = await axios.post(`http://${process.env.REACT_APP_API_BASE_URL}/login`, {
         email,
         password,
       });
       if (response.status === 200) {
-        // 로그인 성공 시 토큰 저장 및 인증 상태 업데이트
         localStorage.setItem('token', response.data.token);
         login();
-        navigate('/diary');
+        navigate('/');
       } else {
         alert(response.data);
       }

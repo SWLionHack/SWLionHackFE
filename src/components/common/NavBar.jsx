@@ -40,6 +40,8 @@ function NavBar() {
           </li>
         ) : (
           <li className="nav-item">
+            {/* 테스트용 */}
+            <button className="btn btn-link nav-link" onClick={handleLogout}>로그아웃</button>
             <Link className="nav-link" to="/login">로그인</Link>
           </li>
         )}

@@ -5,6 +5,7 @@ import MainPage from './components/MainPage';
 import Diary from './components/Diary';
 import Survey from './components/Survey';
 import Community from './components/Community';
+import PostDetail from './components/PostDetail';
 import QnA from './components/QnA';
 import NearbyCounseling from './components/NearbyCounseling';
 import Login from './components/login/Login';
@@ -13,6 +14,7 @@ import { AuthProvider } from './components/login/AuthContext';
 // import Footer from './components/common/Footer';
 import Counseling from './components/Counseling';
 import ChatRoom from './components/ChatRoom';
+import CreatePost from './components/CreatePost'
 // import ProtectedRoute from './components/login/ProtectedRoute';
 import './App.css';
 import SurveyDetail from './components/SurveyDetail';
@@ -70,6 +72,8 @@ function App() {
                       <Route path="/survey" element={<Survey />} />
                       <Route path="/survey/:surveyId" element={<SurveyDetail />} />
                       <Route path="/community" element={<Community />} />
+                      <Route path="/post/:postId" element={<PostDetail />} />
+                      <Route path="/create-post" element={<CreatePost />} /> 
                       <Route path="/qna" element={<QnA />} />
                       <Route path="/counseling" element={<Counseling />} />
                       <Route path="/counseling/:id" element={<ChatRoom />} />
