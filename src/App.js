@@ -15,6 +15,7 @@ import Counseling from './components/Counseling';
 import ChatRoom from './components/ChatRoom';
 // import ProtectedRoute from './components/login/ProtectedRoute';
 import './App.css';
+import SurveyDetail from './components/SurveyDetail';
 
 // function App() {
 //   return (
@@ -67,6 +68,7 @@ function App() {
                     <Routes>
                       <Route path="/diary" element={<Diary />} />
                       <Route path="/survey" element={<Survey />} />
+                      <Route path="/survey/:surveyId" element={<SurveyDetail />} />
                       <Route path="/community" element={<Community />} />
                       <Route path="/qna" element={<QnA />} />
                       <Route path="/counseling" element={<Counseling />} />
