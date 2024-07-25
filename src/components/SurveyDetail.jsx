@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 function SurveyDetail() {
   const { surveyId } = useParams();
+  const navigate = useNavigate();
   const [questions, setQuestions] = useState([]);
   const [answers, setAnswers] = useState({});
 
@@ -28,18 +29,21 @@ function SurveyDetail() {
 
   const handleSubmit = () => {
     const formattedAnswers = Object.keys(answers).map(questionId => ({
-      questionId,
+      questionId: parseInt(questionId, 10), // questionId를 정수로 변환
       answer: answers[questionId]
     }));
 
     axios.post(`http://${API_BASE_URL}/survey/${surveyId}/submit`, formattedAnswers)
       .then(() => {
         alert('설문이 제출되었습니다.');
+        navigate('/survey'); // 설문 제출 후 설문조사 목록 페이지로 이동
       })
       .catch(error => {
         console.error('Error submitting survey:', error);
       });
   };
+
+  const options = ['전혀 그렇지 않다', '그렇지 않다', '보통이다', '그렇다', '매우 그렇다'];
 
   return (
     <div>
@@ -47,12 +51,19 @@ function SurveyDetail() {
       <ul>
         {questions.map(question => (
           <li key={question.id}>
-            <p>{question.text}</p> {/* 여기서 content를 text로 변경 */}
-            <input
-              type="text"
-              value={answers[question.id] || ''}
-              onChange={e => handleAnswerChange(question.id, e.target.value)}
-            />
+            <p>{question.text}</p>
+            {options.map(option => (
+              <label key={option}>
+                <input
+                  type="radio"
+                  name={`question-${question.id}`}
+                  value={option}
+                  checked={answers[question.id] === option}
+                  onChange={e => handleAnswerChange(question.id, e.target.value)}
+                />
+                {option}
+              </label>
+            ))}
           </li>
         ))}
       </ul>
