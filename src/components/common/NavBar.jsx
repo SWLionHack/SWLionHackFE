@@ -27,6 +27,9 @@ function NavBar() {
           <Link className="nav-link" to="/qna">전문가 Q&A</Link>
         </li>
         <li className="nav-item">
+          <Link className="nav-link" to="/open-chatrooms">오픈 채팅방</Link> {/* 오픈 채팅방 추가 */}
+        </li>
+        <li className="nav-item">
           <Link className="nav-link" to="/counseling">상담받기</Link>
         </li>
         <li className="nav-item">

@@ -1,5 +1,3 @@
-/* index.css */
-
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -23,6 +21,7 @@ nav ul li a {
 
 main {
   padding: 1em;
+  margin-top: 70px; /* 초기값 설정 */
 }
 
 section {

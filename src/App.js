@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import NavBar from './components/common/NavBar';
 import MainPage from './components/MainPage';
@@ -16,7 +16,13 @@ import Counseling from './components/Counseling';
 import ChatRoom from './components/ChatRoom';
 import CreatePost from './components/CreatePost'
 // import ProtectedRoute from './components/login/ProtectedRoute';
+
+// open chat
+import OpenChatRooms from './components/open_chat/OpenChatRooms';
+import OpenChatRoomDetail from './components/open_chat/OpenChatRoomDetail';
+
 import './App.css';
+import './index.css';
 import SurveyDetail from './components/SurveyDetail';
 
 // function App() {
@@ -53,39 +59,52 @@ import SurveyDetail from './components/SurveyDetail';
 //     </AuthProvider>
 //   );
 // }
+
 function App() {
+  const [navHeight, setNavHeight] = useState(70); // 초기값
+
+  useEffect(() => {
+    const updateNavHeight = () => {
+      const nav = document.querySelector('nav');
+      if (nav) {
+        setNavHeight(nav.offsetHeight);
+      }
+    };
+
+    updateNavHeight();
+    window.addEventListener('resize', updateNavHeight);
+
+    return () => {
+      window.removeEventListener('resize', updateNavHeight);
+    };
+  }, []);
+
   return (
     <AuthProvider>
       <Router>
         <div className="App">
-          <Routes>
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route
-              path="*"
-              element={
-                <>
-                  <NavBar />
-                  <main>
-                    <Routes>
-                      <Route path="/diary" element={<Diary />} />
-                      <Route path="/survey" element={<Survey />} />
-                      <Route path="/survey/:surveyId" element={<SurveyDetail />} />
-                      <Route path="/community" element={<Community />} />
-                      <Route path="/post/:postId" element={<PostDetail />} />
-                      <Route path="/create-post" element={<CreatePost />} /> 
-                      <Route path="/qna" element={<QnA />} />
-                      <Route path="/counseling" element={<Counseling />} />
-                      <Route path="/counseling/:id" element={<ChatRoom />} />
-                      <Route path="/nearby" element={<NearbyCounseling />} />
-                      <Route path="/" element={<MainPage />} />
-                    </Routes>
-                  </main>
-                  {/* <Footer /> */}
-                </>
-              }
-            />
-          </Routes>
+          <NavBar />
+          <main style={{ marginTop: `${navHeight}px` }}>
+            <Routes>
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/diary" element={<Diary />} />
+              <Route path="/survey" element={<Survey />} />
+              <Route path="/survey/:surveyId" element={<SurveyDetail />} />
+              <Route path="/community" element={<Community />} />
+              <Route path="/post/:postId" element={<PostDetail />} />
+              <Route path="/create-post" element={<CreatePost />} />
+              <Route path="/qna" element={<QnA />} />
+              <Route path="/counseling" element={<Counseling />} />
+              <Route path="/counseling/:id" element={<ChatRoom />} />
+
+              <Route path="/open-chatrooms" element={<OpenChatRooms />} />
+              <Route path="/open-chatroom/:id" element={<OpenChatRoomDetail />} />\
+
+              <Route path="/nearby" element={<NearbyCounseling />} />
+              <Route path="/" element={<MainPage />} />
+            </Routes>
+          </main>
         </div>
       </Router>
     </AuthProvider>
