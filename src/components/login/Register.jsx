@@ -10,6 +10,7 @@ function Register() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [status, setStatus] = useState('parent'); // 기본값 설정
+  const [birthdate, setBirthdate] = useState(''); // 생년월일 추가
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
@@ -22,6 +23,7 @@ function Register() {
         password,
         confirmPassword,
         status,
+        birthdate
       });
       if (response.status === 201) {
         alert('회원가입 성공');
@@ -111,6 +113,16 @@ function Register() {
               Child
             </label>
           </div>
+        </div>
+        <div className="form-group">
+          <label htmlFor="birthdate">생년월일:</label>
+          <input
+            type="date"
+            id="birthdate"
+            value={birthdate}
+            onChange={(e) => setBirthdate(e.target.value)}
+            required
+          />
         </div>
         <button type="submit">회원가입</button>
         <p>로그인으로 돌아갈까요? <Link to="/login">로그인</Link></p>
