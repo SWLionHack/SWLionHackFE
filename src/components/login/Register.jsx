@@ -9,7 +9,7 @@ function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [status, setStatus] = useState('parent'); // 기본값 설정
+  // const [status, setStatus] = useState('parent'); // 기본값 설정
   const [birthdate, setBirthdate] = useState(''); // 생년월일 추가
   const navigate = useNavigate();
 
