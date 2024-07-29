@@ -15,25 +15,16 @@ function NavBar() {
       <a className="navbar-brand ms-5" href="/">MAUM</a>
       <ul className="navbar-nav me-auto">
         <li className="nav-item">
-          <Link className="nav-link" to="/diary">마음일기</Link>
-        </li>
-        <li className="nav-item">
-          <Link className="nav-link" to="/survey">설문조사</Link>
+          <Link className="nav-link" to="/today-question">오늘의 질문</Link>
         </li>
         <li className="nav-item">
           <Link className="nav-link" to="/community">커뮤니티</Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to="/qna">전문가 Q&A</Link>
+          <Link className="nav-link" to="/open-chatrooms">오픈 채팅방</Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to="/open-chatrooms">오픈 채팅방</Link> {/* 오픈 채팅방 추가 */}
-        </li>
-        <li className="nav-item">
-          <Link className="nav-link" to="/counseling">상담받기</Link>
-        </li>
-        <li className="nav-item">
-          <Link className="nav-link" to="/nearby">가까운 상담소</Link>
+          <Link className="nav-link" to="/nearby">주변 장소</Link>
         </li>
       </ul>
       <ul className="navbar-nav ms-auto">
@@ -43,8 +34,6 @@ function NavBar() {
           </li>
         ) : (
           <li className="nav-item">
-            {/* 테스트용 */}
-            <button className="btn btn-link nav-link" onClick={handleLogout}>로그아웃</button>
             <Link className="nav-link" to="/login">로그인</Link>
           </li>
         )}

@@ -1,0 +1,56 @@
+.shared-answers {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.shared-answers__header {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.shared-answers__container {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  padding: 10px;
+}
+
+.shared-answers__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.shared-answers__item:last-child {
+  border-bottom: none;
+}
+
+.shared-answers__content {
+  flex: 1;
+  margin-right: 20px;
+  margin-bottom: 0px;
+}
+
+.shared-answers__likes {
+  display: flex;
+  align-items: center;
+}
+
+.shared-answers__like-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.shared-answers__like-button:hover {
+  background-color: #0056b3;
+}

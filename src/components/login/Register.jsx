@@ -92,29 +92,6 @@ function Register() {
           />
         </div>
         <div className="form-group">
-          <label>역할:</label>
-          <div className="radio-group">
-            <label>
-              <input
-                type="radio"
-                value="parent"
-                checked={status === 'parent'}
-                onChange={(e) => setStatus(e.target.value)}
-              />
-              Parent
-            </label>
-            <label>
-              <input
-                type="radio"
-                value="child"
-                checked={status === 'child'}
-                onChange={(e) => setStatus(e.target.value)}
-              />
-              Child
-            </label>
-          </div>
-        </div>
-        <div className="form-group">
           <label htmlFor="birthdate">생년월일:</label>
           <input
             type="date"
@@ -124,7 +101,7 @@ function Register() {
             required
           />
         </div>
-        <button type="submit">회원가입</button>
+        <button class="register_button" type="submit">회원가입</button>
         <p>로그인으로 돌아갈까요? <Link to="/login">로그인</Link></p>
       </form>
     </div>

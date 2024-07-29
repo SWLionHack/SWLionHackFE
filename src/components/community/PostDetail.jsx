@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import './style/PostDetail.css'; 
+import '../style/PostDetail.css'; 
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
@@ -112,6 +112,7 @@ function PostDetail() {
       {post.isAuthor && (
         <button onClick={handleDeletePost} className="delete-post-button">삭제</button>
       )}
+      <hr className="divider"/>
       <div className="comments-section">
         <h3>Comments</h3>
         <ul>

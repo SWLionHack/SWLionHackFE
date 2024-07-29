@@ -1,0 +1,146 @@
+.today-question {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.today-question__timer {
+  text-align: right;
+  font-size: 14px;
+  color: #666;
+}
+
+.today-question__header {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.today-question__text {
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.today-question__answer-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.today-question__answer {
+  font-size: 20px;
+  flex: 1;
+}
+
+.today-question__textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.today-question__checkbox {
+  margin-right: 10px;
+}
+
+.today-question__submit-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.today-question__toggle-btn {
+  background-color: #008CBA;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-left: 20px;
+}
+
+.today-question__header {
+  text-align: center;
+  font-size: 28px;
+  margin-top: 2rem;
+}
+
+.today-question__timer {
+  text-align: center;
+  font-size: 24px;
+  color: #666;
+  margin-top: 1rem;
+}
+
+/* 로딩화면 이모지 */
+.today-question__animation {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin: 20px auto;
+  margin-top: 3rem;
+}
+
+.sleeping-image {
+  position: relative;
+  width: 100px;
+  height: auto;
+  margin: 20px auto 0; /* 아래로 10px 배치 */
+}
+
+.z {
+  position: absolute;
+  color: #000;
+  font-size: 14px;
+  animation: sleep 1.5s infinite ease-in-out;
+}
+
+.z1 {
+  top: 10px;
+  left: 0px; /* 왼쪽으로 살짝 이동 */
+  animation-delay: 0s;
+}
+
+.z2 {
+  top: 5px;
+  left: -10px; /* 왼쪽으로 살짝 이동 */
+  animation-delay: 0.5s;
+}
+
+.z3 {
+  top: 0px;
+  left: -20px; /* 왼쪽으로 살짝 이동 */
+  animation-delay: 1s;
+}
+
+@keyframes sleep {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}

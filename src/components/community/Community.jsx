@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import './style/Community.css';
+import '../style/Community.css';
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
@@ -62,16 +62,16 @@ function Community() {
   return (
     <div className="community-container">
       <h2>Community Posts</h2>
-      <ul className="post-list">
+      <div className="post-list">
         {posts.map((post) => (
-          <li key={post.postID} className="post-item">
-            <span onClick={() => goToPost(post.postID)}>{post.title}</span>
+          <div key={post.postID} className="post-item" onClick={() => goToPost(post.postID)}>
+            <span>{post.title}</span>
             {post.isAuthor && (
-              <button onClick={() => handleDeletePost(post.postID)} className="delete-post-button">X</button>
+              <button onClick={(e) => { e.stopPropagation(); handleDeletePost(post.postID); }} className="delete-post-button">X</button>
             )}
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
       <button className="create-post-button" onClick={goToCreatePost}>
         글쓰기
       </button>

@@ -2,63 +2,32 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import NavBar from './components/common/NavBar';
 import MainPage from './components/MainPage';
-import Diary from './components/Diary';
-import Survey from './components/Survey';
-import Community from './components/Community';
-import PostDetail from './components/PostDetail';
-import QnA from './components/QnA';
+
+// 커뮤니티
+import Community from './components/community/Community';
+import PostDetail from './components/community/PostDetail';
+import CreatePost from './components/community/CreatePost';
+
+// 주변 학원
 import NearbyCounseling from './components/NearbyCounseling';
+
+// 로그인
 import Login from './components/login/Login';
 import Register from './components/login/Register';
 import { AuthProvider } from './components/login/AuthContext';
-// import Footer from './components/common/Footer';
-import Counseling from './components/Counseling';
-import ChatRoom from './components/ChatRoom';
-import CreatePost from './components/CreatePost'
-// import ProtectedRoute from './components/login/ProtectedRoute';
+import ProtectedRoute from './components/login/ProtectedRoute';
 
-// open chat
+// 오픈채팅
 import OpenChatRooms from './components/open_chat/OpenChatRooms';
 import OpenChatRoomDetail from './components/open_chat/OpenChatRoomDetail';
 
+// 오늘의 질문
+import TodayQuestion from './components/DailyQuestion/TodayQuestion';
+import SharedAnswers from './components/DailyQuestion/SharedAnswers';
+import MyAnswers from './components/DailyQuestion/MyAnswers';
+
 import './App.css';
 import './index.css';
-import SurveyDetail from './components/SurveyDetail';
-
-// function App() {
-//   return (
-//     <AuthProvider>
-//       <Router>
-//         <div className="App">
-//           <Routes>
-//             <Route path="/login" element={<Login />} />
-//             <Route path="/register" element={<Register />} />
-//             <Route
-//               path="*"
-//               element={
-//                 <>
-//                   <NavBar />
-//                   <main>
-//                     <Routes>
-//                       <Route path="/diary" element={<ProtectedRoute><Diary /></ProtectedRoute>} />
-//                       <Route path="/survey" element={<ProtectedRoute><Survey /></ProtectedRoute>} />
-//                       <Route path="/community" element={<ProtectedRoute><Community /></ProtectedRoute>} />
-//                       <Route path="/qna" element={<ProtectedRoute><QnA /></ProtectedRoute>} />
-//                       {/* <Route path="/counseling" element={<ProtectedRoute><Counseling /></ProtectedRoute>} /> */}
-//                       <Route path="/nearby" element={<ProtectedRoute><NearbyCounseling /></ProtectedRoute>} />
-//                       <Route path="/" element={<Diary />} />
-//                     </Routes>
-//                   </main>
-//                   <Footer />
-//                 </>
-//               }
-//             />
-//           </Routes>
-//         </div>
-//       </Router>
-//     </AuthProvider>
-//   );
-// }
 
 function App() {
   const [navHeight, setNavHeight] = useState(70); // 초기값
@@ -88,20 +57,25 @@ function App() {
             <Routes>
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
-              <Route path="/diary" element={<Diary />} />
-              <Route path="/survey" element={<Survey />} />
-              <Route path="/survey/:surveyId" element={<SurveyDetail />} />
-              <Route path="/community" element={<Community />} />
-              <Route path="/post/:postId" element={<PostDetail />} />
-              <Route path="/create-post" element={<CreatePost />} />
-              <Route path="/qna" element={<QnA />} />
-              <Route path="/counseling" element={<Counseling />} />
-              <Route path="/counseling/:id" element={<ChatRoom />} />
 
-              <Route path="/open-chatrooms" element={<OpenChatRooms />} />
-              <Route path="/open-chatroom/:id" element={<OpenChatRoomDetail />} />\
+              {/* 보호된 라우트 */}
+              {/* 커뮤니티 */}
+              <Route path="/community" element={<ProtectedRoute><Community /></ProtectedRoute>} />
+              <Route path="/post/:postId" element={<ProtectedRoute><PostDetail /></ProtectedRoute>} />
+              <Route path="/create-post" element={<ProtectedRoute><CreatePost /></ProtectedRoute>} />
 
-              <Route path="/nearby" element={<NearbyCounseling />} />
+              {/* 오픈 채팅방 */}
+              <Route path="/open-chatrooms" element={<ProtectedRoute><OpenChatRooms /></ProtectedRoute>} />
+              <Route path="/open-chatroom/:id" element={<ProtectedRoute><OpenChatRoomDetail /></ProtectedRoute>} />
+
+              {/* 지도 */}
+              <Route path="/nearby" element={<ProtectedRoute><NearbyCounseling /></ProtectedRoute>} />
+
+              {/* 오늘의 질문 */}
+              <Route path="/today-question" element={<ProtectedRoute><TodayQuestion /></ProtectedRoute>} />
+              <Route path="/shared-answers" element={<ProtectedRoute><SharedAnswers /></ProtectedRoute>} />
+              <Route path="/my-answers" element={<ProtectedRoute><MyAnswers /></ProtectedRoute>} />
+
               <Route path="/" element={<MainPage />} />
             </Routes>
           </main>

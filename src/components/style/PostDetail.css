@@ -62,7 +62,9 @@
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 16px;
-    height: 40px; /* 세로 길이를 늘리기 위해 추가한 속성 */
+    height: 40px;
+    width: auto;
+    margin-right: 0px;
   }
   
   .comment-form button[type="submit"] {

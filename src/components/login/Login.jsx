@@ -19,8 +19,9 @@ function Login() {
       });
       if (response.status === 200) {
         localStorage.setItem('token', response.data.token);
-        login();
-        navigate('/');
+        const token = response.data.token;
+        login(token);
+        navigate('/today-question');
       } else {
         alert(response.data);
       }
@@ -54,7 +55,7 @@ function Login() {
             required
           />
         </div>
-        <button type="submit">로그인</button>
+        <button class="login_button" type="submit">로그인</button>
       </form>
       <p>아이디가 없으신가요? <Link to="/register">회원가입</Link></p>
     </div>

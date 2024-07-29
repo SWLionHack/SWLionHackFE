@@ -6,10 +6,14 @@ import { Navigate } from 'react-router-dom';
 import { AuthContext } from './AuthContext';
 
 const ProtectedRoute = ({ children }) => {
-  const { isAuthenticated } = useContext(AuthContext);
+  const { isAuthenticated, isLoading } = useContext(AuthContext);
+
+  if (isLoading) {
+    return <div>Loading...</div>; // 로딩 중일 때 표시할 내용
+  }
 
   if (!isAuthenticated) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/login" replace />;
   }
 
   return children;

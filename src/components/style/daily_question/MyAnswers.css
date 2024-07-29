@@ -1,0 +1,48 @@
+.my-answers {
+  margin-top: 20px;
+}
+
+.my-answers__item {
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  /* margin-bottom: 10px; */
+  margin-top: 1rem;
+  margin-left: 10px;
+  margin-right: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 95%; /* 가로 길이 줄이기 */
+}
+
+.my-answers__title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 10px;
+  margin-top: 1rem;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.my-answers__content {
+  font-size: 16px;
+  margin-top: 1rem;
+  margin-left: 10px;
+  margin-right: 10px;
+  flex: 1;
+}
+
+.my-answers__no-answer {
+  font-size: 16px;
+  color: #666;
+}
+
+.my-answers__date {
+  font-size: 14px;
+  margin-top: 1rem;
+  margin-left: 10px;
+  margin-right: 10px;
+  color: #999;
+}

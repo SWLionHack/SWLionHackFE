@@ -11,6 +11,7 @@ const OpenChatRoomDetail = () => {
   const [roomName, setRoomName] = useState('');
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
+  const [userCount, setUserCount] = useState(0);
   const socket = useRef(null);
   const messagesEndRef = useRef(null);
   const [username, setUsername] = useState('');
@@ -40,6 +41,10 @@ const OpenChatRoomDetail = () => {
 
     socket.current.on('receiveMessage', (message) => {
       setMessages((prevMessages) => [...prevMessages, message]);
+    });
+
+    socket.current.on('userCountUpdate', (count) => {
+      setUserCount(count);
     });
 
     return () => {
@@ -73,6 +78,7 @@ const OpenChatRoomDetail = () => {
   return (
     <div className="open-chat-room-detail">
       <h2>{roomName}</h2>
+      <div className="user-count">접속자 수: {userCount}</div>
       <div className="messages">
         {messages.map((msg, index) => (
           <div key={index} className="message">
@@ -88,7 +94,7 @@ const OpenChatRoomDetail = () => {
           onChange={(e) => setNewMessage(e.target.value)}
           onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
         />
-        <button onClick={handleSendMessage}>Send</button>
+        <button className="message_send_button" onClick={handleSendMessage}>Send</button>
       </div>
     </div>
   );

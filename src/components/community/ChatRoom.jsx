@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import './style/ChatRoom.css'; // CSS 파일 import
+import '../style/ChatRoom.css'; // CSS 파일 import
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
