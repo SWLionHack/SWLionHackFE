@@ -19,7 +19,7 @@ const TodayQuestion = () => {
   const [showMyAnswers, setShowMyAnswers] = useState(false);
   const [isShared, setIsShared] = useState(true); // 공유 여부 상태 기본값을 true로 변경
   const [remainingTime, setRemainingTime] = useState('');
-  // const [isQuestionReady, setIsQuestionReady] = useState(false);
+  // const [setIsQuestionReady] = useState(false);
 
   useEffect(() => {
     const fetchQuestionAndAnswer = async () => {
@@ -40,7 +40,7 @@ const TodayQuestion = () => {
             setAnswer(response.data.answer);
             await fetchSharedAnswers();
           }
-          setIsQuestionReady(true);
+          // setIsQuestionReady(true);
         } catch (error) {
           console.error('Error fetching today\'s question and answer:', error);
         }
