@@ -165,7 +165,6 @@ const NearbyPlace = () => {
         </div>
         {searchResults.length > 0 && (
           <div className="search-results-container">
-            <h3>검색 결과</h3>
             <ul className="results-list">
               {searchResults.map((result, index) => (
                 <li key={index} className="result-item" onClick={() => handleResultClick(result.name)}>
