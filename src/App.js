@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import NavBar from './components/common/NavBar';
 import MainPage from './components/MainPage';
@@ -8,8 +8,10 @@ import Community from './components/community/Community';
 import PostDetail from './components/community/PostDetail';
 import CreatePost from './components/community/CreatePost';
 
-// 주변 학원
-import NearbyCounseling from './components/NearbyCounseling';
+// 지도
+import NearbyPlace from './components/map/NearbyPlace';
+import ReviewPage from './components/map/ReviewPage';
+import { SearchProvider } from './components/map/SearchContext';
 
 // 로그인
 import Login from './components/login/Login';
@@ -26,11 +28,16 @@ import TodayQuestion from './components/DailyQuestion/TodayQuestion';
 import SharedAnswers from './components/DailyQuestion/SharedAnswers';
 import MyAnswers from './components/DailyQuestion/MyAnswers';
 
+import { LoadScript } from '@react-google-maps/api';
 import './App.css';
 import './index.css';
 
+const libraries = ['places'];
+const googleMapsApiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
+
 function App() {
   const [navHeight, setNavHeight] = useState(70); // 초기값
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     const updateNavHeight = () => {
@@ -50,37 +57,50 @@ function App() {
 
   return (
     <AuthProvider>
-      <Router>
-        <div className="App">
-          <NavBar />
-          <main style={{ marginTop: `${navHeight}px` }}>
-            <Routes>
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
+      <SearchProvider>
+        <LoadScript
+          googleMapsApiKey={googleMapsApiKey}
+          libraries={libraries}
+          onLoad={() => setIsLoaded(true)}
+        >
+          {isLoaded ? (
+            <Router>
+              <div className="App">
+                <NavBar />
+                <main style={{ marginTop: `${navHeight}px` }}>
+                  <Routes>
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<Register />} />
 
-              {/* 보호된 라우트 */}
-              {/* 커뮤니티 */}
-              <Route path="/community" element={<ProtectedRoute><Community /></ProtectedRoute>} />
-              <Route path="/post/:postId" element={<ProtectedRoute><PostDetail /></ProtectedRoute>} />
-              <Route path="/create-post" element={<ProtectedRoute><CreatePost /></ProtectedRoute>} />
+                    {/* 보호된 라우트 */}
+                    {/* 커뮤니티 */}
+                    <Route path="/community" element={<ProtectedRoute><Community /></ProtectedRoute>} />
+                    <Route path="/post/:postId" element={<ProtectedRoute><PostDetail /></ProtectedRoute>} />
+                    <Route path="/create-post" element={<ProtectedRoute><CreatePost /></ProtectedRoute>} />
 
-              {/* 오픈 채팅방 */}
-              <Route path="/open-chatrooms" element={<ProtectedRoute><OpenChatRooms /></ProtectedRoute>} />
-              <Route path="/open-chatroom/:id" element={<ProtectedRoute><OpenChatRoomDetail /></ProtectedRoute>} />
+                    {/* 오픈 채팅방 */}
+                    <Route path="/open-chatrooms" element={<ProtectedRoute><OpenChatRooms /></ProtectedRoute>} />
+                    <Route path="/open-chatroom/:id" element={<ProtectedRoute><OpenChatRoomDetail /></ProtectedRoute>} />
 
-              {/* 지도 */}
-              <Route path="/nearby" element={<ProtectedRoute><NearbyCounseling /></ProtectedRoute>} />
+                    {/* 지도 */}
+                    <Route path="/nearby" element={<ProtectedRoute><NearbyPlace /></ProtectedRoute>} />
+                    <Route path="/reviews/:academyName" element={<ProtectedRoute><ReviewPage /></ProtectedRoute>} />
 
-              {/* 오늘의 질문 */}
-              <Route path="/today-question" element={<ProtectedRoute><TodayQuestion /></ProtectedRoute>} />
-              <Route path="/shared-answers" element={<ProtectedRoute><SharedAnswers /></ProtectedRoute>} />
-              <Route path="/my-answers" element={<ProtectedRoute><MyAnswers /></ProtectedRoute>} />
+                    {/* 오늘의 질문 */}
+                    <Route path="/today-question" element={<ProtectedRoute><TodayQuestion /></ProtectedRoute>} />
+                    <Route path="/shared-answers" element={<ProtectedRoute><SharedAnswers /></ProtectedRoute>} />
+                    <Route path="/my-answers" element={<ProtectedRoute><MyAnswers /></ProtectedRoute>} />
 
-              <Route path="/" element={<MainPage />} />
-            </Routes>
-          </main>
-        </div>
-      </Router>
+                    <Route path="/" element={<MainPage />} />
+                  </Routes>
+                </main>
+              </div>
+            </Router>
+          ) : (
+            <div>Loading...</div> // 로딩 상태일 때 표시할 컴포넌트
+          )}
+        </LoadScript>
+      </SearchProvider>
     </AuthProvider>
   );
 }
