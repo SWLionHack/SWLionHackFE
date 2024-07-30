@@ -84,7 +84,7 @@ const NearbyPlace = () => {
   }, [keyword, map, currentLocation, setSearchResults, setMarkers, fetchRatings]);
 
   const handleResultClick = (academyName) => {
-    navigate(`/map_academy/reviews/${academyName}`);
+    navigate(`/reviews/${academyName}`);
   };
 
   useEffect(() => {
