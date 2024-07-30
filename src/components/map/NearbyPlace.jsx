@@ -51,7 +51,7 @@ const NearbyPlace = () => {
     } catch (error) {
       console.error('Error fetching ratings:', error);
     }
-  }, [API_BASE_URL, setSearchResults, token]);
+  }, [setSearchResults, token]);
 
   const handleSearch = useCallback(() => {
     if (keyword && map) {
