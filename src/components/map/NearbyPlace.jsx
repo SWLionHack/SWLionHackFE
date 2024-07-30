@@ -106,7 +106,13 @@ const NearbyPlace = () => {
     }
     if (savedSearchResults) setSearchResults(JSON.parse(savedSearchResults));
     if (savedMarkers) setMarkers(JSON.parse(savedMarkers));
-  }, [setCurrentLocation, setKeyword, setSearchResults, setMarkers, handleSearch]);
+  }, [setCurrentLocation, setKeyword, setSearchResults, setMarkers]);
+
+  useEffect(() => {
+    if (keyword && map) {
+      handleSearch();
+    }
+  }, [keyword, map, handleSearch]);
 
   return (
     <div className="nearby-place">

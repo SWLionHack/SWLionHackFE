@@ -57,7 +57,7 @@ const ReviewPage = () => {
   const handleReviewSubmit = async () => {
     const { rating, comment } = newReview;
     try {
-      await axios.post(`http://${API_BASE_URL}/map_academy/review`, 
+      await axios.post(`http://${API_BASE_URL}/review`, 
       {
         academyname: academyName,
         rating: parseFloat(rating),
