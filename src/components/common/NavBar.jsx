@@ -21,6 +21,9 @@ function NavBar() {
           <Link className="nav-link" to="/community">커뮤니티</Link>
         </li>
         <li className="nav-item">
+          <Link className="nav-link" to="/vote">투표</Link>
+        </li>
+        <li className="nav-item">
           <Link className="nav-link" to="/open-chatrooms">오픈 채팅방</Link>
         </li>
         <li className="nav-item">

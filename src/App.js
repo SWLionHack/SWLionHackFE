@@ -23,6 +23,11 @@ import ProtectedRoute from './components/login/ProtectedRoute';
 import OpenChatRooms from './components/open_chat/OpenChatRooms';
 import OpenChatRoomDetail from './components/open_chat/OpenChatRoomDetail';
 
+// 투표
+import Vote from './components/qna/Vote';
+import NewVoteForm from './components/qna/VoteForm';
+import VoteDetail from './components/qna/VoteDetail';
+
 // 오늘의 질문
 import TodayQuestion from './components/DailyQuestion/TodayQuestion';
 import SharedAnswers from './components/DailyQuestion/SharedAnswers';
@@ -81,6 +86,11 @@ function App() {
                     {/* 오픈 채팅방 */}
                     <Route path="/open-chatrooms" element={<ProtectedRoute><OpenChatRooms /></ProtectedRoute>} />
                     <Route path="/open-chatroom/:id" element={<ProtectedRoute><OpenChatRoomDetail /></ProtectedRoute>} />
+
+                    {/* 투표 */}
+                    <Route path="/vote" element={<ProtectedRoute><Vote /></ProtectedRoute>} />
+                    <Route path="/vote/new" element={<ProtectedRoute><NewVoteForm /></ProtectedRoute>} />
+                    <Route path="/vote/:voteID" element={<ProtectedRoute><VoteDetail /></ProtectedRoute>} />
 
                     {/* 지도 */}
                     <Route path="/nearby" element={<ProtectedRoute><NearbyPlace /></ProtectedRoute>} />
