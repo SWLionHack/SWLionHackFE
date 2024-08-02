@@ -119,7 +119,7 @@ const Vote = () => {
             className={`sort-button ${sortBy === 'creation' ? 'active' : ''}`}
             onClick={() => setSortBy('creation')}
           >
-            최신순
+            생성순
           </button>
         </div>
       </div>

@@ -12,7 +12,7 @@ function NavBar() {
 
   return (
     <nav className="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-      <a className="navbar-brand ms-5" href="/">MAUM</a>
+      <a className="navbar-brand ms-5" href="/">BreakTime</a>
       <ul className="navbar-nav me-auto">
         <li className="nav-item">
           <Link className="nav-link" to="/today-question">오늘의 질문</Link>

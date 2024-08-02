@@ -69,7 +69,7 @@ const VoteDetail = () => {
 
   return (
     <div className="vote-detail-container">
-      <button className="delete-button" onClick={handleDelete}>×</button>
+      {/* <button className="delete-button" onClick={handleDelete}>×</button> */}
       <h2 className="vote-detail-title">{vote.title}</h2>
       <p className="vote-detail-content">{vote.content}</p>
       <p className="vote-count">동의수 : {voteCount}</p>

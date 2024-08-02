@@ -21,7 +21,13 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     setIsAuthenticated(false);
+    
+    // 로그인 토큰 삭제
     localStorage.removeItem('token');
+    
+    // 지도 데이터 삭제
+    localStorage.removeItem('keyword');
+    localStorage.removeItem('searchResults');
   };
 
   return (
