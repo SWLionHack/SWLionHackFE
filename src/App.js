@@ -33,6 +33,10 @@ import TodayQuestion from './components/DailyQuestion/TodayQuestion';
 import SharedAnswers from './components/DailyQuestion/SharedAnswers';
 import MyAnswers from './components/DailyQuestion/MyAnswers';
 
+// 챗봇
+import ChatbotPage from './components/chatbot/ChatbotPage'
+import ChatbotIcon from './components/chatbot/ChatbotIcon'
+
 import { LoadScript } from '@react-google-maps/api';
 import './App.css';
 import './index.css';
@@ -101,9 +105,13 @@ function App() {
                     <Route path="/shared-answers" element={<ProtectedRoute><SharedAnswers /></ProtectedRoute>} />
                     <Route path="/my-answers" element={<ProtectedRoute><MyAnswers /></ProtectedRoute>} />
 
+                    {/* 챗봇 */}
+                    <Route path="/chatbot" element={<ProtectedRoute><ChatbotPage /></ProtectedRoute>} /> 
+
                     <Route path="/" element={<MainPage />} />
                   </Routes>
                 </main>
+                <ChatbotIcon /> {/* 추가된 챗봇 아이콘 */}
               </div>
             </Router>
           ) : (

@@ -1,0 +1,16 @@
+/* components/chatbot/ChatbotIcon.css */
+.chatbot-icon-container-custom {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    cursor: pointer;
+  }
+  
+  .chatbot-icon-custom {
+    width: 100px; /* 이미지의 너비 */
+    height: 90px; /* 이미지의 높이 */
+    border-radius: 50%; /* 원형으로 만들기 */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
+  }
+  

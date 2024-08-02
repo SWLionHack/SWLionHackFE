@@ -1,0 +1,86 @@
+/* components/chatbot/ChatbotPage.css */
+.chatbot-page {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+    background-color: #f4f4f4;
+    padding: 20px;
+  }
+  
+  .chatbot-header {
+    background-color: #007bff;
+    color: white;
+    padding: 15px;
+    border-radius: 10px 10px 0 0;
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+  }
+  
+  .chatbot-window {
+    background-color: white;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    height: 400px;
+    display: flex;
+    height: 500px; /* 채팅창 높이를 500px로 늘림 */
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .chatbot-messages {
+    padding: 15px;
+    overflow-y: auto;
+    flex: 1;
+  }
+  
+  .chatbot-message {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 70%;
+  }
+  
+  /* AI 메시지 (왼쪽 정렬) */
+  .chatbot-message.bot {
+    background-color: #e9ecef;
+    align-self: flex-start;
+    margin-left: 170px;
+  }
+  
+  /* 사용자 메시지 (오른쪽 정렬) */
+  .chatbot-message.user {
+    background-color: #007bff;
+    color: white;
+    align-self: flex-end;
+    width:fit-content;
+  }
+  
+  .chatbot-input-container {
+    display: flex;
+    border-top: 1px solid #ddd;
+    padding: 10px;
+  }
+  
+  .chatbot-input {
+    flex: 1;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    margin-right: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .chatbot-send-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
