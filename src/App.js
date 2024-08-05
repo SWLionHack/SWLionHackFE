@@ -43,6 +43,9 @@ import DiaryList from './components/diary/DiaryList'
 import CreateDiary from './components/diary/CreateDiary'
 import DiaryDetail from './components/diary/DiaryDetail'
 
+import SurveyForm from './components/survey/SurveyForm'
+import Survey from './components/survey/Survey'
+
 import { LoadScript } from '@react-google-maps/api';
 import './App.css';
 import './index.css';
@@ -115,10 +118,14 @@ function App() {
                     {/* 챗봇 */}
                     <Route path="/chatbot" element={<ProtectedRoute><ChatbotPage /></ProtectedRoute>} /> 
 
-                    {/* 다이어ㄹ */}
+                    {/* 다이어리 */}
                     <Route path="/diary" element={<ProtectedRoute><DiaryList /></ProtectedRoute>} />
                     <Route path="/diary/new" element={<ProtectedRoute><CreateDiary /></ProtectedRoute>} />
                     <Route path="/diary/:id" element={<ProtectedRoute><DiaryDetail /></ProtectedRoute>} />
+
+                    {/* 설문조사 */}
+                    <Route path="/survey" element={<ProtectedRoute><Survey /></ProtectedRoute>} />
+                    <Route path="/survey-form" element={<ProtectedRoute><SurveyForm /></ProtectedRoute>} />
 
                     <Route path="/" element={<MainPage />} />
                   </Routes>

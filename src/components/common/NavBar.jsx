@@ -21,6 +21,9 @@ function NavBar() {
           <Link className="nav-link" to="/diary">일기</Link>
         </li>
         <li className="nav-item">
+          <Link className="nav-link" to="/survey">설문조사</Link>
+        </li>
+        <li className="nav-item">
           <Link className="nav-link" to="/communityList">커뮤니티</Link>
         </li>
         <li className="nav-item">
