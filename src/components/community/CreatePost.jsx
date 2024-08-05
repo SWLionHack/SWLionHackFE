@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import '../style/CreatePost.css';
+import { useNavigate, useParams } from 'react-router-dom';
+import '../style/community/CreatePost.css';
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
@@ -9,6 +9,7 @@ const CreatePost = () => {
   const [postTitle, setPostTitle] = useState('');
   const [postContent, setPostContent] = useState('');
   const navigate = useNavigate();
+  const { category } = useParams();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -16,13 +17,14 @@ const CreatePost = () => {
     try {
       await axios.post(`http://${API_BASE_URL}/posts/create`, {
         title: postTitle,
-        content: postContent
+        content: postContent,
+        category: category 
       }, {
         headers: {
           Authorization: `Bearer ${token}`
         }
       });
-      navigate('/community');
+      navigate(`/community/${category}`); 
     } catch (error) {
       console.error('게시글 작성 중 오류가 발생했습니다:', error);
     }

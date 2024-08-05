@@ -1,21 +1,38 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-import '../style/Community.css';
+import '../style/community/Community.css';
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
+const boards = [
+  { name: '정보 및 팁 공유', category: 'info-tips' },
+  { name: '감정 나누기', category: 'share-feelings' },
+  // 다른 카테고리들 추가
+];
 
 function Community() {
   const [posts, setPosts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+  const { category } = useParams();  // URL에서 category 파라미터 추출
+
+  // 현재 카테고리에 맞는 이름 찾기
+  const boardName = boards.find(board => board.category === category)?.name || 'Unknown Board';
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true); // 데이터 로딩 시작
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get(`http://${API_BASE_URL}/posts/titles?page=${currentPage}`, {
+        const response = await axios.get(`http://${API_BASE_URL}/posts/titles`, {
+          params: {
+            category,
+            page: currentPage,
+            size: 10
+          },
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -25,18 +42,20 @@ function Community() {
         setTotalPages(response.data.totalPages);
       } catch (error) {
         console.error('Error fetching posts:', error);
+      } finally {
+        setLoading(false); // 데이터 로딩 완료
       }
     };
 
     fetchData();
-  }, [currentPage]);
+  }, [category, currentPage]);
 
   const goToPost = (postId) => {
     navigate(`/post/${postId}`);
   };
 
   const goToCreatePost = () => {
-    navigate('/create-post');
+    navigate(`/community/${category}/create-post`);
   };
 
   const handleDeletePost = async (postId) => {
@@ -59,9 +78,13 @@ function Community() {
     }
   };
 
+  if (loading) {
+    return <div>Loading...</div>; 
+  }
+
   return (
     <div className="community-container">
-      <h2>Community Posts</h2>
+      <h2>{boardName}</h2>
       <div className="post-list">
         {posts.map((post) => (
           <div key={post.postID} className="post-item" onClick={() => goToPost(post.postID)}>

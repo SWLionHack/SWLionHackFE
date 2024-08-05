@@ -18,7 +18,7 @@ function NavBar() {
           <Link className="nav-link" to="/today-question">오늘의 질문</Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to="/community">커뮤니티</Link>
+          <Link className="nav-link" to="/communityList">커뮤니티</Link>
         </li>
         <li className="nav-item">
           <Link className="nav-link" to="/vote">투표</Link>

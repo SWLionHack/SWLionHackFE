@@ -7,6 +7,7 @@ import MainPage from './components/MainPage';
 import Community from './components/community/Community';
 import PostDetail from './components/community/PostDetail';
 import CreatePost from './components/community/CreatePost';
+import CommunityList from './components/community/CommunityList'
 
 // 지도
 import NearbyPlace from './components/map/NearbyPlace';
@@ -83,10 +84,11 @@ function App() {
 
                     {/* 보호된 라우트 */}
                     {/* 커뮤니티 */}
-                    <Route path="/community" element={<ProtectedRoute><Community /></ProtectedRoute>} />
+                    <Route path="/communityList" element={<ProtectedRoute><CommunityList /></ProtectedRoute>} />
+                    <Route path="/community/:category" element={<ProtectedRoute><Community /></ProtectedRoute>} />
                     <Route path="/post/:postId" element={<ProtectedRoute><PostDetail /></ProtectedRoute>} />
-                    <Route path="/create-post" element={<ProtectedRoute><CreatePost /></ProtectedRoute>} />
-
+                    <Route path="/community/:category/create-post" element={<ProtectedRoute><CreatePost /></ProtectedRoute>} />
+      
                     {/* 오픈 채팅방 */}
                     <Route path="/open-chatrooms" element={<ProtectedRoute><OpenChatRooms /></ProtectedRoute>} />
                     <Route path="/open-chatroom/:id" element={<ProtectedRoute><OpenChatRoomDetail /></ProtectedRoute>} />
