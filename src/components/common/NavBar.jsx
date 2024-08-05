@@ -23,15 +23,25 @@ function NavBar() {
         <li className="nav-item">
           <Link className="nav-link" to="/survey">설문조사</Link>
         </li>
+        <li className="nav-item dropdown">
+          <Link className="nav-link dropdown-toggle" to="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            모임
+          </Link>
+          <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li>
+              <Link className="dropdown-item" to="/meet-vote">모임 투표</Link>
+            </li>
+            <li>
+              <Link className="dropdown-item" to="/meet-chat">모임 채팅</Link>
+            </li>
+          </ul>
+        </li>
         <li className="nav-item">
           <Link className="nav-link" to="/communityList">커뮤니티</Link>
         </li>
-        <li className="nav-item">
-          <Link className="nav-link" to="/vote">투표</Link>
-        </li>
-        <li className="nav-item">
+        {/* <li className="nav-item">
           <Link className="nav-link" to="/open-chatrooms">오픈 채팅방</Link>
-        </li>
+        </li> */}
         <li className="nav-item">
           <Link className="nav-link" to="/nearby">주변 장소</Link>
         </li>

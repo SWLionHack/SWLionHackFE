@@ -18,8 +18,9 @@ const SurveyResult = () => {
             Authorization: `Bearer ${token}`
           }
         });
-        if (response.data) {
-          setResult(response.data[0]);
+        
+        if (response.data[0].result) {
+          setResult(response.data[0].result);
         } else {
           navigate('/survey-form');
         }
@@ -43,7 +44,7 @@ const SurveyResult = () => {
   return (
     <div className="survey-result-container">
       <h1>검사 결과</h1>
-      <p>회원님의 검사 결과는 : <strong>{result.result}</strong> 입니다.</p>
+      <p>회원님의 검사 결과는 : <strong>{result}</strong> 입니다.</p>
       <p>{result.recommendation}</p>
       <button className="retake-button" onClick={handleRetakeSurvey}>다시 검사하기</button>
     </div>

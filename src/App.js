@@ -43,8 +43,20 @@ import DiaryList from './components/diary/DiaryList'
 import CreateDiary from './components/diary/CreateDiary'
 import DiaryDetail from './components/diary/DiaryDetail'
 
+// 설문조사
 import SurveyForm from './components/survey/SurveyForm'
 import Survey from './components/survey/Survey'
+
+// 만남 기능
+import MeetCreateForm from './components/meet/MeetCreateForm';
+import MeetList from './components/meet/MeetingList';
+import MeetDetail from './components/meet/MeetDetail';
+import MeetVote from './components/meet/MeetVote';
+import MeetDelete from './components/meet/MeetDelete';
+
+import MeetChatRoom from './components/meet_chat/MeetChatRoom'
+import MeetChatRoomList from './components/meet_chat/MeetChatRoomList'
+
 
 import { LoadScript } from '@react-google-maps/api';
 import './App.css';
@@ -98,8 +110,8 @@ function App() {
                     <Route path="/community/:category/create-post" element={<ProtectedRoute><CreatePost /></ProtectedRoute>} />
       
                     {/* 오픈 채팅방 */}
-                    <Route path="/open-chatrooms" element={<ProtectedRoute><OpenChatRooms /></ProtectedRoute>} />
-                    <Route path="/open-chatroom/:id" element={<ProtectedRoute><OpenChatRoomDetail /></ProtectedRoute>} />
+                    {/* <Route path="/open-chatrooms" element={<ProtectedRoute><OpenChatRooms /></ProtectedRoute>} />
+                    <Route path="/open-chatroom/:id" element={<ProtectedRoute><OpenChatRoomDetail /></ProtectedRoute>} /> */}
 
                     {/* 투표 */}
                     <Route path="/vote" element={<ProtectedRoute><Vote /></ProtectedRoute>} />
@@ -126,6 +138,17 @@ function App() {
                     {/* 설문조사 */}
                     <Route path="/survey" element={<ProtectedRoute><Survey /></ProtectedRoute>} />
                     <Route path="/survey-form" element={<ProtectedRoute><SurveyForm /></ProtectedRoute>} />
+
+                    {/* 만남 기능 */}
+                    <Route path="/meet-vote" element={<ProtectedRoute><MeetList /></ProtectedRoute>} />
+                    <Route path="/meet-vote/create" element={<ProtectedRoute><MeetCreateForm /></ProtectedRoute>} />
+                    <Route path="/meet-vote/:meetID" element={<ProtectedRoute><MeetDetail /></ProtectedRoute>} />
+                    <Route path="/meet-vote/:meetID/vote" element={<ProtectedRoute><MeetVote /></ProtectedRoute>} />
+                    <Route path="/meet-vote/:meetID/delete" element={<ProtectedRoute><MeetDelete /></ProtectedRoute>} />
+
+                    <Route path="/meet-chat" element={<ProtectedRoute><MeetChatRoomList /></ProtectedRoute>} />
+                    <Route path="/meet-chat/:roomID" element={<ProtectedRoute><MeetChatRoom /></ProtectedRoute>} />
+
 
                     <Route path="/" element={<MainPage />} />
                   </Routes>

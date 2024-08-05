@@ -37,7 +37,7 @@ const OpenChatRoomDetail = () => {
     fetchMessages();
 
     socket.current = io(`http://${API_BASE_URL}`);
-    socket.current.emit('joinRoom', { roomId: id, userId, username });
+    socket.current.emit('joinOpenRoom', { roomId: id, userId, username }); // 이벤트를 joinOpenRoom으로 변경
 
     socket.current.on('receiveMessage', (message) => {
       setMessages((prevMessages) => [...prevMessages, message]);
@@ -67,7 +67,7 @@ const OpenChatRoomDetail = () => {
       createdAt: new Date()
     };
 
-    socket.current.emit('sendMessage', message);
+    socket.current.emit('sendOpenMessage', message); // 이벤트를 sendOpenMessage로 변경
     setNewMessage('');
   };
 

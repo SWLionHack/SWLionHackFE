@@ -1,0 +1,111 @@
+/* MeetDetail.css */
+
+.meet-detail {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 800px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.meet-detail-header {
+  display: flex;
+  justify-content: center; /* 변경: 전체 요소가 중앙에 배치되도록 설정 */
+  align-items: center;
+  margin-bottom: 20px;
+  position: relative; /* 변경: 제목을 중앙에 위치시키기 위해 추가 */
+}
+
+.meet-detail-header h2 {
+  color: #333333;
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+  flex: 1; /* 변경: 제목을 가운데로 정렬하기 위해 flex-grow 설정 */
+  text-align: center; /* 제목을 가운데 정렬 */
+}
+
+.meet-detail-time {
+  font-size: 14px;
+  color: #ff5a5f;
+  position: absolute; /* 변경: 제목의 오른쪽에 위치 */
+  right: 0; /* 오른쪽 끝에 위치 */
+}
+
+.meet-detail-author {
+  font-size: 14px;
+  color: #999999;
+  margin-bottom: 10px;
+}
+
+.meet-detail-content {
+  color: #666666;
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  word-wrap: break-word;
+}
+
+.meet-detail-expiration {
+  font-size: 14px;
+  color: #999999;
+  margin-bottom: 10px;
+}
+
+.meet-detail-capacity {
+  font-size: 16px;
+  color: #4a90e2;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.meet-detail-participants-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333333;
+  margin-bottom: 10px;
+}
+
+.meet-detail-participants {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.meet-detail-participant {
+  font-size: 14px;
+  color: #555555;
+  margin-bottom: 5px;
+}
+
+.meet-detail-join-button {
+  background-color: #4a90e2;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.meet-detail-join-button:hover {
+  background-color: #357ab8;
+  transform: scale(1.05);
+}
+
+.meet-detail-join-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.meet-detail-joined {
+  font-size: 14px;
+  color: #4a90e2;
+  margin-top: 20px;
+}
