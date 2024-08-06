@@ -43,8 +43,8 @@
 
 .create-post-form button {
   padding: 15px;
-  background-color: #007bff;
-  color: white;
+  background-color: #ffe16b;
+  color: rgb(0, 0, 0);
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -54,5 +54,5 @@
 }
 
 .create-post-form button:hover {
-  background-color: #0056b3;
+  background-color: #ffe16b;
 }

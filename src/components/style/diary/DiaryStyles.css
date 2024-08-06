@@ -1,115 +1,114 @@
 /* 전체 컨테이너 */
 .container {
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    font-family: 'Arial', sans-serif;
-  }
-  
-  /* 일기 목록 */
-  .diary-list {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .diary-list-item {
-    padding: 15px;
-    margin: 10px 0;
-    border: 1px solid #eee;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    cursor: pointer;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .diary-list-item:hover {
-    background-color: #e8e8e8;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* 제목 스타일 */
-  .diary-title {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 10px;
-  }
-  
-  /* 날짜 스타일 */
-  .diary-date {
-    font-size: 14px;
-    color: #999;
-    margin-bottom: 15px;
-  }
-  
-  /* 내용 스타일 */
-  .diary-content {
-    font-size: 16px;
-    line-height: 1.6;
-    color: #555;
-    margin-bottom: 30px;
-  }
-  
-  /* 버튼 스타일 */
-  .button {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #007bff;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    text-align: center;
-    transition: background-color 0.3s ease;
-    text-decoration: none;
-  }
-  
-  .button:hover {
-    background-color: #0056b3;
-  }
-  
-  /* 폼 스타일 */
-  .form-group {
-    margin-bottom: 20px;
-  }
-  
-  .form-label {
-    font-weight: bold;
-    margin-bottom: 5px;
-    display: block;
-  }
-  
-  .form-input,
-  .form-textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 16px;
-    font-family: 'Arial', sans-serif;
-  }
-  
-  .form-textarea {
-    height: 150px;
-    resize: vertical;
-  }
-  
-  .form-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #28a745;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .form-button:hover {
-    background-color: #218838;
-  }
-  
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+}
+
+/* 일기 목록 */
+.diary-list {
+  list-style: none;
+  padding: 0;
+}
+
+.diary-list-item {
+  padding: 15px;
+  margin: 10px 0;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.diary-list-item:hover {
+  background-color: #e8e8e8;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 제목 스타일 */
+.diary-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* 날짜 스타일 */
+.diary-date {
+  font-size: 14px;
+  color: #999;
+  margin-bottom: 15px;
+}
+
+/* 내용 스타일 */
+.diary-content {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+/* 버튼 스타일 */
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #000000;
+  background-color: #81f9af;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+}
+
+.button:hover {
+  background-color: #81f9af;
+}
+
+/* 폼 스타일 */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: 'Arial', sans-serif;
+}
+
+.form-textarea {
+  height: 150px;
+  resize: vertical;
+}
+
+.form-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #28a745;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-button:hover {
+  background-color: #218838;
+}

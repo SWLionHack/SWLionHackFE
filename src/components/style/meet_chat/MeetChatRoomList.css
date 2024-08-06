@@ -33,7 +33,7 @@
     padding: 10px;
     border: 1px solid #cccccc;
     border-radius: 8px;
-    color: #4a90e2;
+    color: #002c5c;
     text-decoration: none;
     font-size: 16px;
     font-weight: 500;
@@ -42,6 +42,6 @@
   
   .chat-room-link:hover {
     background-color: #f0f0f0;
-    color: #357ab8;
+    color: #002c5c;
   }
   

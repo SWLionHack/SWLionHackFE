@@ -11,14 +11,14 @@ function NavBar() {
   };
 
   return (
-    <nav className="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-      <a className="navbar-brand ms-5" href="/">BreakTime</a>
+    <nav className="navbar navbar-expand-sm navbar fixed-top" style={{ backgroundColor: '#EAD1DC' }}>
+      <a className="navbar-brand ms-5" href="/">!육아</a>
       <ul className="navbar-nav me-auto">
         <li className="nav-item">
-          <Link className="nav-link" to="/today-question">오늘의 질문</Link>
+          <Link className="nav-link" to="/today-question">오늘의 미션</Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to="/diary">일기</Link>
+          <Link className="nav-link" to="/diary">엄마의 기록</Link>
         </li>
         <li className="nav-item">
           <Link className="nav-link" to="/survey">심리검사</Link>
@@ -29,21 +29,21 @@ function NavBar() {
           </Link>
           <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
             <li>
-              <Link className="dropdown-item" to="/meet-vote">모임 투표</Link>
+              <Link className="dropdown-item" to="/meet-vote">같이 모일까요</Link>
             </li>
             <li>
-              <Link className="dropdown-item" to="/meet-chat">모임 채팅</Link>
+              <Link className="dropdown-item" to="/meet-chat">함께 이야기해요</Link>
             </li>
           </ul>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to="/communityList">커뮤니티</Link>
+          <Link className="nav-link" to="/communityList">COMMUNITY</Link>
         </li>
         {/* <li className="nav-item">
           <Link className="nav-link" to="/open-chatrooms">오픈 채팅방</Link>
         </li> */}
         <li className="nav-item">
-          <Link className="nav-link" to="/nearby">주변 장소</Link>
+          <Link className="nav-link" to="/nearby">MOM/BABY'S PLACE</Link>
         </li>
       </ul>
       <ul className="navbar-nav ms-auto">

@@ -49,8 +49,8 @@
 }
 
 .today-question__submit-btn {
-  background-color: #4CAF50;
-  color: white;
+  background-color: #93c4fc;
+  color: rgb(0, 0, 0);
   border: none;
   padding: 10px 20px;
   text-align: center;

@@ -17,7 +17,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #e2b3b3;
 }
 
 .post-item:last-child {
@@ -25,24 +25,25 @@
 }
 
 .post-item:hover {
-  background-color: #f5f5f5;
+  background-color: #f1cfcf;
 }
 
 .create-post-button {
   display: inline-block;
   padding: 10px 20px;
-  font-size: 16px;
-  color: #fff;
-  background-color: #007bff;
+  font-size: 20px;
+  color: #000000;
+  background-color: #ffe16b;
   border: none;
-  border-radius: 5px;
+  border-radius: 9px;
   cursor: pointer;
   margin-top: 20px;
   width: 100%;
 }
 
 .create-post-button:hover {
-  background-color: #0056b3;
+  background-color: #ffe16b;
+  ;
 }
 
 .comment-form {
@@ -53,7 +54,7 @@
   width: calc(100% - 110px);
   padding: 10px;
   margin-right: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #000000;
   border-radius: 5px;
 }
 

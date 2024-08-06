@@ -1,15 +1,16 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Gamja Flower", sans-serif;
+  font-size: 20px; /* 기본 폰트 크기 설정 */
   margin: 0;
   padding: 0;
   background-color: #f0f0f0;
 }
-
 .App {
   text-align: center;
 }
 
 .App-header {
+  font-family: "Jua", sans-serif;
   background-color: #282c34;
   padding: 20px;
   color: white;
@@ -56,11 +57,13 @@ body {
 }
 
 main {
+  font-family: "Jua", sans-serif;
   margin-top: 80px; /* 네비게이션 바의 높이와 동일하게 설정 */
   padding: 20px;
 }
 
 section {
+  font-family: "Jua", sans-serif;
   background: white;
   margin: 10px auto;
   padding: 20px;
