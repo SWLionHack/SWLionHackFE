@@ -42,6 +42,7 @@ import ChatbotIcon from './components/chatbot/ChatbotIcon'
 import DiaryList from './components/diary/DiaryList'
 import CreateDiary from './components/diary/CreateDiary'
 import DiaryDetail from './components/diary/DiaryDetail'
+import DiaryScore from './components/diary/DiaryScore'
 
 // 설문조사
 import SurveyForm from './components/survey/SurveyForm'
@@ -134,6 +135,8 @@ function App() {
                     <Route path="/diary" element={<ProtectedRoute><DiaryList /></ProtectedRoute>} />
                     <Route path="/diary/new" element={<ProtectedRoute><CreateDiary /></ProtectedRoute>} />
                     <Route path="/diary/:id" element={<ProtectedRoute><DiaryDetail /></ProtectedRoute>} />
+                    <Route path="/diary/score" element={<ProtectedRoute><DiaryScore /></ProtectedRoute>} />
+                    
 
                     {/* 설문조사 */}
                     <Route path="/survey" element={<ProtectedRoute><Survey /></ProtectedRoute>} />

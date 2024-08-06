@@ -20,6 +20,7 @@ const DiaryDetail = () => {
           }
         });
         setDiary(response.data);
+        console.log(response.data);
       } catch (error) {
         console.error('Error fetching diary:', error);
       }
@@ -35,9 +36,9 @@ const DiaryDetail = () => {
   return (
     <div className="container">
       <h1 className="diary-title">{diary.title}</h1>
-      <p className="diary-date">{new Date(diary.date).toLocaleDateString()}</p>
+      <p className="diary-date">{new Date(diary.createdAt).toLocaleDateString()}</p>
       <p className="diary-content">{diary.content}</p>
-      <button className="button" onClick={() => navigate('/diary')}>Back to List</button>
+      <p className="diary-content">{diary.score} 점</p>
     </div>
   );
 };
