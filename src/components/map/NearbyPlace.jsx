@@ -89,8 +89,8 @@ const NearbyPlace = () => {
 
   useEffect(() => {
     const initialLocation = {
-      lat: 36.61083, // 설정하고 싶은 위도
-      lng: 127.2865 // 설정하고 싶은 경도
+      lat: 37.4700, // 설정하고 싶은 위도
+      lng: 127.0396 // 설정하고 싶은 경도
     };
     setCurrentLocation(initialLocation);
 
