@@ -21,7 +21,7 @@ function NavBar() {
           <Link className="nav-link" to="/diary">일기</Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to="/survey">설문조사</Link>
+          <Link className="nav-link" to="/survey">심리검사</Link>
         </li>
         <li className="nav-item dropdown">
           <Link className="nav-link dropdown-toggle" to="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

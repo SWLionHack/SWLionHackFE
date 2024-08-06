@@ -161,7 +161,7 @@ const TodayQuestion = () => {
   const hours = now.getHours();
   
 
-  if (hours < 8) {
+  if (hours < 0) {
     const remainingUntilEight = new Date();
     remainingUntilEight.setHours(8, 0, 0, 0);
     const diff = remainingUntilEight - now;
@@ -172,7 +172,7 @@ const TodayQuestion = () => {
 
     return (
       <div className="today-question">
-      <h2 className="today-question__header">오늘의 질문을 준비중입니다.</h2>
+      <h2 className="today-question__header">오늘의 미션을 준비중입니다.</h2>
       <p className="today-question__timer">질문까지 남은 시간: {hoursLeft}시간 {minutesLeft}분 {secondsLeft}초</p>
         <div className="today-question__animation">
        
@@ -190,9 +190,9 @@ const TodayQuestion = () => {
   return (
     <div className="today-question">
       <div className="today-question__timer">
-        오늘의 질문 남은 시간: {remainingTime}
+        오늘의 미션 남은 시간: {remainingTime}
       </div>
-      <h2 className="today-question__header">오늘의 질문</h2>
+      <h2 className="today-question__header">오늘의 미션</h2>
       <p className="today-question__text">{question.question}</p>
       {hasAnswered ? (
         <>

@@ -6,8 +6,9 @@ const CommunityList = () => {
   const navigate = useNavigate();
 
   const boards = [
-    { name: '정보 및 팁 공유', category: 'info-tips' },
-    { name: '감정 나누기', category: 'share-feelings' },
+    { name: '자유 게시판', category: 'free' },
+    { name: '정보 게시판', category: 'info-tips' },
+    { name: '장터 게시판', category: 'shopping' },
     // 다른 카테고리들 추가
   ];
 
