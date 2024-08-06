@@ -19,7 +19,6 @@
 
 .shared-answers__item {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   padding: 10px;
   border-bottom: 1px solid #ddd;
@@ -29,15 +28,33 @@
   border-bottom: none;
 }
 
-.shared-answers__content {
-  flex: 1;
+.shared-answers__image-container {
+  flex-shrink: 0;
+  width: 100px;
+  height: 100px;
   margin-right: 20px;
-  margin-bottom: 0px;
+}
+
+.shared-answers__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.shared-answers__text-container {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.shared-answers__content {
+  margin-right: 20px;
 }
 
 .shared-answers__likes {
-  display: flex;
-  align-items: center;
+  margin-left: auto;
 }
 
 .shared-answers__like-button {
@@ -47,8 +64,7 @@
   border-radius: 4px;
   padding: 5px 10px;
   cursor: pointer;
-  display: flex;
-  align-items: center;
+  width:60px;
 }
 
 .shared-answers__like-button:hover {

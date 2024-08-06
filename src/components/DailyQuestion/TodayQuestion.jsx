@@ -13,13 +13,13 @@ const socket = io(`http://${API_BASE_URL}`);
 const TodayQuestion = () => {
   const [question, setQuestion] = useState({});
   const [answer, setAnswer] = useState('');
+  const [image, setImage] = useState(null);
   const [hasAnswered, setHasAnswered] = useState(false);
   const [sharedAnswers, setSharedAnswers] = useState([]);
   const [myAnswers, setMyAnswers] = useState([]);
   const [showMyAnswers, setShowMyAnswers] = useState(false);
-  const [isShared, setIsShared] = useState(true); // 공유 여부 상태 기본값을 true로 변경
+  const [isShared, setIsShared] = useState(true);
   const [remainingTime, setRemainingTime] = useState('');
-  // const [setIsQuestionReady] = useState(false);
 
   useEffect(() => {
     const fetchQuestionAndAnswer = async () => {
@@ -40,7 +40,6 @@ const TodayQuestion = () => {
             setAnswer(response.data.answer);
             await fetchSharedAnswers();
           }
-          // setIsQuestionReady(true);
         } catch (error) {
           console.error('Error fetching today\'s question and answer:', error);
         }
@@ -65,7 +64,7 @@ const TodayQuestion = () => {
     const timer = setInterval(updateRemainingTime, 1000);
 
     socket.on('receiveSharedAnswer', (newAnswer) => {
-      setSharedAnswers(prevAnswers => [...prevAnswers, newAnswer]); // 새로운 답변을 리스트의 맨 아래에 추가
+      setSharedAnswers(prevAnswers => [...prevAnswers, newAnswer]);
     });
 
     socket.on('updateLikeCount', (updatedAnswer) => {
@@ -105,6 +104,8 @@ const TodayQuestion = () => {
           Authorization: `Bearer ${token}`
         }
       });
+
+      console.log(response)
       setMyAnswers(response.data);
     } catch (error) {
       console.error('Error fetching my answers:', error);
@@ -114,13 +115,18 @@ const TodayQuestion = () => {
   const handleAnswerSubmit = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.post(`http://${API_BASE_URL}/daily-questions`, {
-        content: answer,
-        questionId: question.id,
-        isShared: isShared // 공유 여부 추가
-      }, {
+      const formData = new FormData();
+      formData.append('content', answer);
+      formData.append('questionId', question.id);
+      formData.append('isShared', isShared);
+      if (image) {
+        formData.append('image', image);
+      }
+
+      const response = await axios.post(`http://${API_BASE_URL}/daily-questions`, formData, {
         headers: {
-          Authorization: `Bearer ${token}`
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'multipart/form-data',
         }
       });
       setHasAnswered(true);
@@ -144,10 +150,14 @@ const TodayQuestion = () => {
       setSharedAnswers(sharedAnswers.map(answer => 
         answer.id === questionId ? { ...answer, likes: response.data.likes } : answer
       ));
-      socket.emit('updateLikeCount', response.data); // 좋아요 수 업데이트 이벤트를 서버로 전송
+      socket.emit('updateLikeCount', response.data);
     } catch (error) {
       console.error('Error liking the answer:', error);
     }
+  };
+
+  const handleImageChange = (e) => {
+    setImage(e.target.files[0]);
   };
 
   const toggleMyAnswers = async () => {
@@ -159,7 +169,6 @@ const TodayQuestion = () => {
 
   const now = new Date();
   const hours = now.getHours();
-  
 
   if (hours < 0) {
     const remainingUntilEight = new Date();
@@ -172,18 +181,15 @@ const TodayQuestion = () => {
 
     return (
       <div className="today-question">
-      <h2 className="today-question__header">오늘의 미션을 준비중입니다.</h2>
-      <p className="today-question__timer">질문까지 남은 시간: {hoursLeft}시간 {minutesLeft}분 {secondsLeft}초</p>
+        <h2 className="today-question__header">오늘의 미션을 준비중입니다.</h2>
+        <p className="today-question__timer">미션까지 남은 시간: {hoursLeft}시간 {minutesLeft}분 {secondsLeft}초</p>
         <div className="today-question__animation">
-       
-        <img src="./loading_img.png" alt="Sleeping dog" className="sleeping-image" />
-        <div className="z z1">Z</div>
-        <div className="z z2">Z</div>
-        <div className="z z3">Z</div>
-       
+          <img src="./loading_img.png" alt="Sleeping dog" className="sleeping-image" />
+          <div className="z z1">Z</div>
+          <div className="z z2">Z</div>
+          <div className="z z3">Z</div>
         </div>
       </div>  
-
     );
   }
 
@@ -215,6 +221,11 @@ const TodayQuestion = () => {
             onChange={(e) => setAnswer(e.target.value)}
             rows="4"
             cols="50"
+          />
+          <br />
+          <input 
+            type="file" 
+            onChange={handleImageChange}
           />
           <br />
           <label>
